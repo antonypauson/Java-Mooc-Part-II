@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Box {
+public class Box implements Packable{
     private ArrayList<Packable> items;
     private double maxCap;
 
@@ -45,6 +45,18 @@ public class Box {
         box.add(new CD("Wigwam", "Nuclear Nightclub", 1975));
         box.add(new CD("Rendezvous Park", "Closer to Being Here", 2012));
 
+        System.out.println(box);
+
+        //Boxes can contain other boxes
+        //since Box is also a Packable interface;
+        Box box1 = new Box(10);
+        box.add(box1);
+
+        Box box2 = new Box(10);
+        box2.add(new CD("Pink Floyd", "Dark Side of the Moon", 1973));
+        box2.add(new CD("Wigwam", "Nuclear Nightclub", 1975));
+        box2.add(new CD("Rendezvous Park", "Closer to Being Here", 2012));
+        box.add(box2);
         System.out.println(box);
     }
 }
