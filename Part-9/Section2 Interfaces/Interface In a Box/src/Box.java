@@ -9,6 +9,14 @@ public class Box {
         this.maxCap = maxCap;
     }
 
+    public double weight() {
+        double weight = 0;
+        for (Packable packable : items) {
+            weight += packable.weight();
+        }
+        return weight;
+    }
+
     public void add(Packable packable) {
         if (this.maxCap - packable.weight() > 0) {
             this.items.add(packable);
@@ -19,13 +27,11 @@ public class Box {
     @Override
     public String toString() {
         int count = 0;
-        double weight = 0;
         for (Packable packable : items) {
             count++;
-            weight += packable.weight();
         }
         return "Box: " + count + " items, total weight "
-                + weight + " kg";
+                + this.weight() + " kg";
     }
 
     public static void main(String[] args) {
