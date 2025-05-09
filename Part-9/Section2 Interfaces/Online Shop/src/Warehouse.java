@@ -24,14 +24,58 @@ public class Warehouse {
         return -99;
     }
 
-    public static void main(String[] args) {
-        Warehouse warehouse = new Warehouse();
-        warehouse.addProduct("milk", 3, 10);
-        warehouse.addProduct("coffee", 5, 7);
+    public int  stock(String product) {
+        for (String products : this.productStock.keySet()) {
+            if (products.equals(product)) {
+                return this.productStock.get(products);
+            }
+        }
+        return 0;
+    }
 
-        System.out.println("prices:");
-        System.out.println("milk: " + warehouse.price("milk"));
-        System.out.println("coffee: " + warehouse.price("coffee"));
-        System.out.println("sugar: " + warehouse.price("sugar"));
+    public boolean take(String product) {
+        int currentStock = 0;
+        for (String products : this.productStock.keySet()) {
+            if (products.equals(product)) {
+                currentStock = this.productStock.get(products);
+
+                if (currentStock - 1 < 0) {
+                    return false;
+                } else {
+                    currentStock--;
+                    this.productStock.put(product, currentStock);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+//        //Part 1
+//        Warehouse warehouse = new Warehouse();
+//        warehouse.addProduct("milk", 3, 10);
+//        warehouse.addProduct("coffee", 5, 7);
+//
+//        System.out.println("prices:");
+//        System.out.println("milk: " + warehouse.price("milk"));
+//        System.out.println("coffee: " + warehouse.price("coffee"));
+//        System.out.println("sugar: " + warehouse.price("sugar"));
+
+        //Part 2
+        Warehouse warehouse = new Warehouse();
+        warehouse.addProduct("coffee", 5, 1);
+
+        System.out.println("stock:");
+        System.out.println("coffee:  " + warehouse.stock("coffee"));
+        System.out.println("sugar: " + warehouse.stock("sugar"));
+
+        System.out.println("taking coffee " + warehouse.take("coffee"));
+        System.out.println("taking coffee " + warehouse.take("coffee"));
+        System.out.println("taking sugar " + warehouse.take("sugar"));
+
+        System.out.println("stock:");
+        System.out.println("coffee:  " + warehouse.stock("coffee"));
+        System.out.println("sugar: " + warehouse.stock("sugar"));
     }
 }
