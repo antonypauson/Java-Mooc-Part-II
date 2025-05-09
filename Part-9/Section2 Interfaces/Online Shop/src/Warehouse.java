@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Warehouse {
     private Map<String, Integer> productPrice;
@@ -22,6 +23,10 @@ public class Warehouse {
             }
         }
         return -99;
+    }
+
+    public Set<String> products() {
+        return  this.productStock.keySet();
     }
 
     public int  stock(String product) {
@@ -62,20 +67,33 @@ public class Warehouse {
 //        System.out.println("coffee: " + warehouse.price("coffee"));
 //        System.out.println("sugar: " + warehouse.price("sugar"));
 
-        //Part 2
+//        //Part 2
+//        Warehouse warehouse = new Warehouse();
+//        warehouse.addProduct("coffee", 5, 1);
+//
+//        System.out.println("stock:");
+//        System.out.println("coffee:  " + warehouse.stock("coffee"));
+//        System.out.println("sugar: " + warehouse.stock("sugar"));
+//
+//        System.out.println("taking coffee " + warehouse.take("coffee"));
+//        System.out.println("taking coffee " + warehouse.take("coffee"));
+//        System.out.println("taking sugar " + warehouse.take("sugar"));
+//
+//        System.out.println("stock:");
+//        System.out.println("coffee:  " + warehouse.stock("coffee"));
+//        System.out.println("sugar: " + warehouse.stock("sugar"));
+
+        //Part 3
         Warehouse warehouse = new Warehouse();
-        warehouse.addProduct("coffee", 5, 1);
+        warehouse.addProduct("milk", 3, 10);
+        warehouse.addProduct("coffee", 5, 6);
+        warehouse.addProduct("buttermilk", 2, 20);
+        warehouse.addProduct("yogurt", 2, 20);
 
-        System.out.println("stock:");
-        System.out.println("coffee:  " + warehouse.stock("coffee"));
-        System.out.println("sugar: " + warehouse.stock("sugar"));
+        System.out.println("products:");
 
-        System.out.println("taking coffee " + warehouse.take("coffee"));
-        System.out.println("taking coffee " + warehouse.take("coffee"));
-        System.out.println("taking sugar " + warehouse.take("sugar"));
-
-        System.out.println("stock:");
-        System.out.println("coffee:  " + warehouse.stock("coffee"));
-        System.out.println("sugar: " + warehouse.stock("sugar"));
+        for (String product: warehouse.products()) {
+            System.out.println(product);
+        }
     }
 }
