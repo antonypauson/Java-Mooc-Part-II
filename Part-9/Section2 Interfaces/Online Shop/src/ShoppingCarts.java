@@ -13,6 +13,12 @@ public class ShoppingCarts {
         itemMap.put(product, item);
     }
 
+    public void print() {
+        for (Item items : itemMap.values()) {
+            System.out.println(items);
+        }
+    }
+
     public int price() {
         int total = 0;
         for (Item items : itemMap.values()) {
@@ -29,5 +35,7 @@ public class ShoppingCarts {
         System.out.println("cart price: " + cart.price());
         cart.add("computer", 899);
         System.out.println("cart price: " + cart.price());
+
+        cart.print();
     }
 }
