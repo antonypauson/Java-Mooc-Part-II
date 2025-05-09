@@ -5,4 +5,13 @@ public class TripleTacoBox implements TacoBox {
         this.tacos = 3;
     }
 
+    @Override
+    public int tacosRemaining() {
+        return 0;
+    }
+
+    @Override
+    public void eat() {
+
+    }
 }
