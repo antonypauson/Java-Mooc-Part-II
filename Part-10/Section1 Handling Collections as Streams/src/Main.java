@@ -3,6 +3,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,6 +42,20 @@ public class Main {
                 .count();
 
         System.out.println("Numbers greater than five: " + greaterThan5);
+
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(7);
+        list.add(4);
+        list.add(2);
+        list.add(6);
+
+        ArrayList<Integer> values = list.stream()
+                .filter(val -> val > 5)
+                .map(val -> val * 2)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        System.out.println(values);
     }
 
 }
