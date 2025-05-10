@@ -9,7 +9,7 @@ public class Organism implements Movable {
 
     @Override
     public String toString() {
-        return "x: " + this.x + "; y: " + this.y;
+        return "x: " + this.x + "; y: " + this.y + "\n";
     }
 
     @Override
