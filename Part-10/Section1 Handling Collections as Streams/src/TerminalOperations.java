@@ -23,11 +23,27 @@ public class TerminalOperations {
         //forEach
         values.stream()
                 .filter(val -> val % 2 == 0)
-                .forEach(val -> System.out.println(val + "i s divisilbe by 2"));
+                .forEach(val -> System.out.println(val + " is divisilbe by 2"));
 
         //collect
         List<Integer> list = values.stream()
                 .map(val -> val + 1)
                 .collect(Collectors.toCollection(ArrayList::new));
+        System.out.println(list);
+
+        //reduce
+        int sum = values.stream()
+                .reduce(0, (intialSum, eachVal) -> intialSum += eachVal);
+        System.out.println("Sum = " + sum);
+
+        ArrayList<String> words = new ArrayList<>();
+        words.add("First");
+        words.add("Second");
+        words.add("Third");
+        words.add("Fourth");
+
+        String combinedWord = words.stream()
+                .reduce("", (totalWord, word) -> totalWord += word + "\n");
+        System.out.println("Combined: " + combinedWord);
     }
 }
