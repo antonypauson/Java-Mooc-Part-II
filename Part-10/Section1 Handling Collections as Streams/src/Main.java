@@ -31,6 +31,16 @@ public class Main {
                 .getAsDouble();
 
         System.out.println("Average number: " + average);
+
+        //we have a greaterthanFive function in Screeners
+        //which return true
+        //that is called in the filter
+        long greaterThan5 = inputs.stream()
+                .mapToInt(s -> Integer.parseInt(s))
+                .filter(Screeners::greaterThanFive)
+                .count();
+
+        System.out.println("Numbers greater than five: " + greaterThan5);
     }
 
 }
