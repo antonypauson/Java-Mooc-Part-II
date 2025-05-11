@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Hand {
@@ -11,6 +12,10 @@ public class Hand {
 
     public void add(Card card) {
         this.cards.add(card);
+    }
+
+    public void sort() {
+        Collections.sort(this.cards);
     }
 
     public void print() {
@@ -27,6 +32,7 @@ public class Hand {
         hand.add(new Card(12, Suit.HEART));
         hand.add(new Card(2, Suit.SPADE));
 
+        hand.sort();
         hand.print();
     }
 }
