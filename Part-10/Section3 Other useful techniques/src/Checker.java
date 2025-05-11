@@ -11,6 +11,13 @@ public class Checker {
         return false;
     }
 
+    public static boolean allVowels(String string) {
+        if (string.matches("[aeiou]+")) {
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +29,13 @@ public class Checker {
                 break;
             }
 
-            if (isDayOfWeek(input)) {
+//            if (isDayOfWeek(input)) {
+//                System.out.println("The form is correct");
+//            } else {
+//                System.out.println("The form is incorrect");
+//            }
+
+            if (allVowels(input)) {
                 System.out.println("The form is correct");
             } else {
                 System.out.println("The form is incorrect");
