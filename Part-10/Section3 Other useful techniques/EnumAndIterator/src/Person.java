@@ -8,7 +8,7 @@ public class Person {
     }
 
     public Education getEdu() {
-        return edu;
+        return this.edu;
     }
 
     @Override

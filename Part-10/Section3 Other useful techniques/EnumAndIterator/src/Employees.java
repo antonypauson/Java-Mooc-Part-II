@@ -38,4 +38,31 @@ public class Employees {
             }
         }
     }
+
+    public void fire(Education education) {
+        Iterator<Person> iterator = employees.iterator();
+
+        while (iterator.hasNext()) {
+            Education currentEdu = iterator.next().getEdu();
+            System.out.println(currentEdu);
+            if (currentEdu.equals(education)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Employees university = new Employees();
+        university.add(new Person("Petrus", Education.PHD));
+        university.add(new Person("Arto", Education.HS));
+        university.add(new Person("Elina", Education.PHD));
+
+        university.print();
+
+        university.fire(Education.HS);
+
+        System.out.println("==");
+
+        university.print();
+    }
 }
