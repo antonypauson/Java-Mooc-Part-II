@@ -11,6 +11,15 @@ public class Checker {
         return false;
     }
 
+    public static boolean timeOfDay(String string) {
+        if (string.matches(
+                "(((0|1)[0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]"
+        )) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean allVowels(String string) {
         if (string.matches("[aeiou]+")) {
             return true;
@@ -35,7 +44,13 @@ public class Checker {
 //                System.out.println("The form is incorrect");
 //            }
 
-            if (allVowels(input)) {
+//            if (allVowels(input)) {
+//                System.out.println("The form is correct");
+//            } else {
+//                System.out.println("The form is incorrect");
+//            }
+
+            if (timeOfDay(input)) {
                 System.out.println("The form is correct");
             } else {
                 System.out.println("The form is incorrect");
