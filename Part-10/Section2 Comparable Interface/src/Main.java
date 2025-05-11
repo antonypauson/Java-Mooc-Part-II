@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     //related to Book Class
@@ -23,7 +21,15 @@ public class Main {
             count++;
         }
         System.out.println(count + " books in total\nBooks:\n");
-        System.out.println(books);
+        books.stream()
+                .forEach(book -> System.out.println(book));
+        //display them in order of age
+        System.out.println("Orderd based on age:");
+        Comparator<Book> comparator = Comparator
+                .comparing(Book::getAge);
+        Collections.sort(books, comparator);
+        books.stream()
+                .forEach(book -> System.out.println(book));
 
     }
 }
