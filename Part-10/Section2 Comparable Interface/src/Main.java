@@ -24,10 +24,18 @@ public class Main {
         books.stream()
                 .forEach(book -> System.out.println(book));
         //display them in order of age
-        System.out.println("Orderd based on age:");
+        System.out.println("Ordered based on age:");
         Comparator<Book> comparator = Comparator
                 .comparing(Book::getAge);
         Collections.sort(books, comparator);
+        books.stream()
+                .forEach(book -> System.out.println(book));
+        //display them based on age and name
+        System.out.println("Ordered based on age + name:");
+        Comparator<Book> comparator1 = Comparator
+                .comparing(Book::getAge)
+                .thenComparing(Book::getName);
+        Collections.sort(books,comparator1);
         books.stream()
                 .forEach(book -> System.out.println(book));
 
