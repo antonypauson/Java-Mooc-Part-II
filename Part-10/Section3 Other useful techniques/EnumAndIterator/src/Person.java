@@ -7,6 +7,10 @@ public class Person {
         this.edu = edu;
     }
 
+    public Education getEdu() {
+        return edu;
+    }
+
     @Override
     public String toString() {
         return this.name + " " + this.edu;
