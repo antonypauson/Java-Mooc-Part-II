@@ -1,13 +1,37 @@
 package dictionary;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class SaveableDictionary {
-    Map<String, String> words;
+    private Map<String, String> words;
+    private String file;
 
-    public SaveableDictionary() {
+    public SaveableDictionary(String file) {
         this.words = new HashMap<>();
+        this.file = file;
+    }
+
+    public boolean load() {
+        try {
+            Scanner fileReader = new Scanner(Paths.get(this.file));
+
+            while (fileReader.hasNext()) {
+                String row = fileReader.nextLine();
+                String[] parts = row.split(":");
+
+               this.add(parts[0],parts[1]);
+            }
+            return true;
+
+        } catch (IOException e) {
+            System.out.println("Error " + e.getMessage());
+            return false;
+        }
+
     }
 
     public void add(String word, String translation) {
@@ -48,18 +72,16 @@ public class SaveableDictionary {
     }
 
     public static void main(String[] args) {
-        SaveableDictionary dictionary = new SaveableDictionary();
-        dictionary.add("apina", "monkey");
-        dictionary.add("banaani", "banana");
-        dictionary.add("ohjelmointi", "programming");
-        dictionary.delete("apina");
-        dictionary.delete("banana");
+        SaveableDictionary dictionary = new SaveableDictionary("words.txt");
+        boolean wasSuccessful = dictionary.load();
+
+        if (wasSuccessful) {
+            System.out.println("Successfully loaded the dictionary from file");
+        }
 
         System.out.println(dictionary.translate("apina"));
-        System.out.println(dictionary.translate("monkey"));
-        System.out.println(dictionary.translate("banana"));
-        System.out.println(dictionary.translate("banaani"));
         System.out.println(dictionary.translate("ohjelmointi"));
+        System.out.println(dictionary.translate("alla oleva"));
     }
 }
 
