@@ -1,8 +1,10 @@
 package dictionary;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +15,21 @@ public class SaveableDictionary {
     public SaveableDictionary(String file) {
         this.words = new HashMap<>();
         this.file = file;
+    }
+
+    public boolean save() {
+        try {
+            PrintWriter writer = new PrintWriter(this.file);
+
+            for (String key : words.keySet()) {
+                writer.println(key+":"+words.get(key));
+            }
+            writer.println("Wrote");
+            writer.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean load() {
@@ -73,15 +90,8 @@ public class SaveableDictionary {
 
     public static void main(String[] args) {
         SaveableDictionary dictionary = new SaveableDictionary("words.txt");
-        boolean wasSuccessful = dictionary.load();
-
-        if (wasSuccessful) {
-            System.out.println("Successfully loaded the dictionary from file");
-        }
-
-        System.out.println(dictionary.translate("apina"));
-        System.out.println(dictionary.translate("ohjelmointi"));
-        System.out.println(dictionary.translate("alla oleva"));
+        System.out.println(dictionary.load());
+        System.out.println(dictionary.save());
     }
 }
 
