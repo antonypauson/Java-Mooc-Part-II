@@ -6,9 +6,15 @@ import java.util.List;
 
 public class AverageSensor implements Sensor {
     private List<Sensor> sensors;
+    private List<Integer> reads;
 
     public AverageSensor() {
         sensors = new ArrayList<>();
+        reads = new ArrayList<>();
+    }
+
+    public List<Integer> readings() {
+        return reads;
     }
 
     @Override
@@ -55,7 +61,9 @@ public class AverageSensor implements Sensor {
             sum += iterator.next().read();
             count++;
         }
-        return sum / count;
+        int avg = sum / count;
+        reads.add(avg);
+        return avg;
     }
 
     public void addSensor(Sensor toAdd) {
@@ -77,5 +85,9 @@ public class AverageSensor implements Sensor {
 
         helsinkiRegion.setOn();
         System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees Celsius");
+        System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees Celsius");
+        System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees Celsius");
+
+        System.out.println("readings: " + helsinkiRegion.readings());
     }
 }
