@@ -34,6 +34,20 @@ public class MagicSquare {
         return listOfSums;
     }
 
+    public ArrayList<Integer> sumOfDiagonals() {
+        int sum1 = 0, sum2 = 0;
+        ArrayList<Integer> listOfSums = new ArrayList<>();
+        for (int i = 0; i < square.length; i++) {
+            int j1 = i;
+            sum1 += square[i][j1];
+            int j2 = (square.length - 1) - i;
+            sum2 += square[i][j2];
+        }
+        listOfSums.add(sum1);
+        listOfSums.add(sum2);
+        return listOfSums;
+    }
+
     public ArrayList<Integer> sumOfColumns() {
         ArrayList<Integer> listOfSums = new ArrayList<>();
         int j = 0;
@@ -64,6 +78,7 @@ public class MagicSquare {
         magicSquare.addNumbers();
         System.out.println(magicSquare.sumsOfRows());
         System.out.println(magicSquare.sumOfColumns());
+        System.out.println(magicSquare.sumOfDiagonals());
     }
 
 }
