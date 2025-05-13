@@ -53,7 +53,7 @@ public class List <Type> {
         this.values = newValues; //setting new array as old array
     }
 
-    private Type value(int index) {
+    public Type value(int index) {
         if (index < 0 || index >= this.firstFreeIndex) {
             throw new ArrayIndexOutOfBoundsException("Index " + index + " outside of [0, " + this.firstFreeIndex + "]");
         }
