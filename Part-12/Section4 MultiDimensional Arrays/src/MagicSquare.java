@@ -34,6 +34,21 @@ public class MagicSquare {
         return listOfSums;
     }
 
+    public ArrayList<Integer> sumOfColumns() {
+        ArrayList<Integer> listOfSums = new ArrayList<>();
+        int j = 0;
+
+        while (j < square.length) {
+            int sum = 0;
+            for (int i = 0; i < square.length; i++) {
+                sum += square[i][j];
+            }
+            listOfSums.add(sum);
+            j++;
+        }
+        return listOfSums;
+    }
+
     public void printMagicSquare() {
         System.out.println("Printing: ");
         for (int row = 0; row < square.length; row++) {
@@ -48,6 +63,7 @@ public class MagicSquare {
         MagicSquare magicSquare = new MagicSquare();
         magicSquare.addNumbers();
         System.out.println(magicSquare.sumsOfRows());
+        System.out.println(magicSquare.sumOfColumns());
     }
 
 }
