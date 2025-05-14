@@ -61,7 +61,7 @@ public class MagicSquareFactory {
     }
 
     public static void main(String[] args) {
-        MagicSquareFactory threeMagicSquare = new MagicSquareFactory(3);
+        MagicSquareFactory threeMagicSquare = new MagicSquareFactory(5);
         threeMagicSquare.createMagicSquare();
 
     }
