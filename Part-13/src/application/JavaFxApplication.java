@@ -5,26 +5,24 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.control.TextField;
+
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 
 public class JavaFxApplication extends Application{
 
     @Override
     public void start(Stage window)  {
-        Button button = new Button("This is a button");
-        TextField textfield = new TextField("This is initial text field");
+        BorderPane layout = new BorderPane();
+        layout.setTop(new Label("Top"));
+        layout.setBottom(new Label("Bottom"));
+        layout.setLeft(new Label("Left"));
+        layout.setRight(new Label("Right"));
 
-        FlowPane componentGroup = new FlowPane();
-        componentGroup.getChildren().add(button);
-        componentGroup.getChildren().add(textfield);
-//        componentGroup.getChildren().add(textComponent);
+        Scene view = new Scene(layout);
 
-        Scene scene = new Scene(componentGroup);
-
-
-        window.setTitle("hello world");
-        window.setScene(scene);
+        window.setScene(view);
         window.show();
     }
 
