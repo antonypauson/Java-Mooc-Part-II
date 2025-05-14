@@ -56,6 +56,10 @@ public class HashMap <K,V>{
         } else {
             valuesAtIndex.value(index).setValue(value);
         }
+
+        if (1.0 * this.firstFreeIndex / this.values.length > 0.75) {
+            grow();
+        }
     }
 
     public V get (K key) {
