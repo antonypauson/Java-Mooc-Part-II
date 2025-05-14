@@ -9,18 +9,17 @@ import javafx.scene.control.TextField;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-
+import javafx.scene.layout.HBox;
 public class JavaFxApplication extends Application{
 
     @Override
     public void start(Stage window)  {
 
-        BorderPane layout = new BorderPane();
-        layout.setTop(new Label("NORTH"));
-        layout.setBottom(new Label("SOUTH"));
-        layout.setLeft(new Label("WEST"));
-        layout.setRight(new Label("EAST"));
-        layout.setCenter(new Label("CENTER"));
+        //HBox for horizontal row;
+        HBox layout = new HBox();
+        layout.getChildren().add(new Label("first"));
+        layout.getChildren().add(new Label("second"));
+        layout.getChildren().add(new Label("third"));
 
         Scene view = new Scene(layout);
 
