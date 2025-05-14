@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
 public class JavaFxApplication extends Application{
 
     @Override
@@ -20,7 +22,7 @@ public class JavaFxApplication extends Application{
         layout.getChildren().add(new Label("first"));
         layout.getChildren().add(new Label("second"));
         layout.getChildren().add(new Label("third"));
-
+        layout.setSpacing(10);
         Scene view = new Scene(layout);
 
         window.setScene(view);
