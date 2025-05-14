@@ -8,11 +8,26 @@ public class HashMap <K,V>{
     }
 
     private void grow() {
-        List<Pair<K, V>>[] newValues = new List[this.values.length * 2];
+        List<Pair<K, V>>[] newArray = new List[this.values.length * 2];
 
         //copy the values of old to newValues;
+        for (int i = 0; i < this.values.length; i++) {
+            copy(newArray, i);
+        }
+        this.values = newArray;
+    }
 
-        this.values = newValues;
+    private void copy(List<Pair<K,V>>[] newArray, int fromIdx) {
+        for (int i = 0; i < this.values[fromIdx].size(); i++) {
+
+            Pair<K, V> value = this.values[fromIdx].value(i);
+
+            int hashValue = Math.abs(value.getKey().hashCode() % newArray.length);
+            if (newArray[hashValue] == null) {
+                newArray[hashValue] = new List<>();
+            }
+            newArray[hashValue].add(value);
+        }
     }
 
     private List<Pair<K,V>> getListBasedOnKey(K key) {
