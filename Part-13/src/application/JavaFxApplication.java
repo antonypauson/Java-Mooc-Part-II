@@ -18,11 +18,12 @@ public class JavaFxApplication extends Application{
     public void start(Stage window)  {
 
         //HBox for horizontal row;
-        HBox layout = new HBox();
+        VBox layout = new VBox();
         layout.getChildren().add(new Label("first"));
         layout.getChildren().add(new Label("second"));
         layout.getChildren().add(new Label("third"));
         layout.setSpacing(10);
+
         Scene view = new Scene(layout);
 
         window.setScene(view);
