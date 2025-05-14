@@ -7,6 +7,14 @@ public class HashMap <K,V>{
         this.firstFreeIndex = 0;
     }
 
+    private void grow() {
+        List<Pair<K, V>>[] newValues = new List[this.values.length * 2];
+
+        //copy the values of old to newValues;
+
+        this.values = newValues;
+    }
+
     private List<Pair<K,V>> getListBasedOnKey(K key) {
         int hashValue = Math.abs(key.hashCode() % values.length);
         if (values[hashValue] == null) {
