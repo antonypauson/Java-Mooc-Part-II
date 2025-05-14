@@ -62,6 +62,22 @@ public class HashMap <K,V>{
         }
     }
 
+    public V remove(K key) {
+        List<Pair<K, V>> valuesAtIndex = getListBasedOnKey(key);
+        if (valuesAtIndex.size() == 0) {
+            return null;
+        }
+
+        int index = getIndexOfKey(valuesAtIndex, key);
+        if (index < 0) {
+            return null;
+        }
+
+        Pair<K, V> pair = valuesAtIndex.value(index);
+        valuesAtIndex.remove(pair);
+        return pair.getValue();
+    }
+
     public V get (K key) {
         int hashValue = Math.abs(key.hashCode() % this.values.length);
         if (this.values[hashValue] == null) {
