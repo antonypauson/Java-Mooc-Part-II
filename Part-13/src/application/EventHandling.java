@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
+import java.util.Arrays;
+
 public class EventHandling extends Application {
 
     @Override
@@ -25,8 +27,12 @@ public class EventHandling extends Application {
         //character by character of leftText
         //old value & new value
         leftText.textProperty().addListener((change, oldValue, newValue) -> {
-            System.out.println(oldValue + " -> " + newValue);
-            rightText.setText(newValue);
+            String[] wordsArray = newValue.split(" ");//array of words
+            String longest = Arrays.stream(wordsArray)
+                    .sorted((s1,s2) -> s2.length() - s1.length())
+                    .findFirst()
+                    .get();
+            System.out.println(longest);
         });
         HBox componentGroup = new HBox();
         componentGroup.setSpacing(20);
