@@ -39,14 +39,7 @@ public class Greeter extends Application {
 
         Scene loginView = new Scene(homeLayout);
 
-        Label welcomeText = new Label("Welcome, " + userName.getText());
 
-        StackPane welcomeLayout = new StackPane();
-        welcomeLayout.setPrefSize(300, 180);
-        welcomeLayout.getChildren().add(welcomeText);
-        welcomeLayout.setAlignment(Pos.CENTER);
-
-        Scene welcomeScene = new Scene(welcomeLayout);
 
         loginButton.setOnAction((event) -> {
             if (!passwordField.getText().trim().equals("password")) {
@@ -55,6 +48,14 @@ public class Greeter extends Application {
                 passwordField.setText("");
                 return;
             }
+            Label welcomeText = new Label("Welcome, " + userName.getText());
+
+            StackPane welcomeLayout = new StackPane();
+            welcomeLayout.setPrefSize(300, 180);
+            welcomeLayout.getChildren().add(welcomeText);
+            welcomeLayout.setAlignment(Pos.CENTER);
+
+            Scene welcomeScene = new Scene(welcomeLayout);
             window.setScene(welcomeScene);
         });
 
