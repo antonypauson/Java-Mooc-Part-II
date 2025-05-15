@@ -10,6 +10,8 @@ public class Dictionary {
     public Dictionary() {
         words = new ArrayList<>();
         translations = new HashMap<>();
+        this.words.add("bang");
+        this.translations.put("bang", "bang");
     }
 
     public String get(String word) {
@@ -21,13 +23,29 @@ public class Dictionary {
             this.words.add(word);
         }
         this.translations.put(word, translation);
+
+//        System.out.println((this.words));
+
+//        System.out.println(this.translations.keySet());
     }
 
     public String getRandomWord() {
         Random random = new Random();
 
-        return this.words.get(random.nextInt(this.words.size()));
+
+        String randomWord = this.words.get(random.nextInt(this.words.size()));
+
+        return randomWord;
     }
+
+    public void printWords() {
+        System.out.println((this.words));
+     }
+
+     public void printTrans() {
+         System.out.println(this.translations.keySet());
+         System.out.println(this.translations.values());
+     }
 
 
 }

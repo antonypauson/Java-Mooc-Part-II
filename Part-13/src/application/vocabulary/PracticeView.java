@@ -20,6 +20,8 @@ public class PracticeView {
     public Parent getView() {
         GridPane layout = new GridPane();
 
+        System.out.println(this.word);
+
         Label enterTranslationLabel = new Label("Translate the word '" + this.word + "'");
         TextField enterTranslationField = new TextField();
 
@@ -29,14 +31,14 @@ public class PracticeView {
         layout.setPadding(new Insets(10, 10, 10, 10));
 
         Button checkButton = new Button("Check:");
-        Label messaageLabel = new Label();
+        Label messaageLabel = new Label("");
 
-        layout.add(enterTranslationLabel, 0, 1);
+        layout.add(enterTranslationLabel, 0, 0);
         layout.add(enterTranslationField, 0, 1);
         layout.add(checkButton, 0, 2);
         layout.add(messaageLabel, 0,3);
 
-        checkButton.setOnAction((event) -> {
+        checkButton.setOnMouseClicked((event) -> {
             String enteredTrans = enterTranslationField.getText();
             if (dictionary.get(this.word).equals(enteredTrans)) {
                 messaageLabel.setText("Correct Answer");

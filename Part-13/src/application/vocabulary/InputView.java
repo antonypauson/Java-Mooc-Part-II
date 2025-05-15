@@ -39,7 +39,10 @@ public class InputView {
         addButton.setOnAction((event) -> {
             String word = wordField.getText();
             String trans = transField.getText();
-            dictionary.add(word,trans);
+            this.dictionary.add(word,trans);
+
+            System.out.println(word + "-> " + trans);
+
             wordField.clear();
             transField.clear();
         });
