@@ -1,4 +1,4 @@
-package application.largerapps;
+package application.person;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

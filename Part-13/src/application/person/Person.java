@@ -1,4 +1,4 @@
-package application.largerapps;
+package application.person;
 
 public class Person {
     private String name;
