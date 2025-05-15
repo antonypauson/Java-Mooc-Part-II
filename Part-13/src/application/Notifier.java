@@ -17,6 +17,9 @@ public class Notifier extends Application {
         Button button = new Button("UPDATE");
         Label label = new Label();
 
+        button.setOnAction((event) -> {
+            label.setText(textField.getText());
+        });
         VBox layout = new VBox();
         layout.getChildren().addAll(textField, button, label);
 
