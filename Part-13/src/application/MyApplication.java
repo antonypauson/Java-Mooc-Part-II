@@ -10,6 +10,7 @@ public class MyApplication extends Application {
 
     @Override
     public void start(Stage window) {
+
         Button button = new Button("Click here!");
         BorderPane layout = new BorderPane();
 
