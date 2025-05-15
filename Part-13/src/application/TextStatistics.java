@@ -46,11 +46,13 @@ public class TextStatistics extends Application {
         Scene view = new Scene(layout);
 
         window.setScene(view);
-        window.setTitle("Text Statistics");
+//        window.setTitle("Text Statistics");
         window.show();
     }
 
     public static void main(String[] args) {
-        launch(TextStatistics.class);
+        launch(TextStatistics.class,
+                "--organization=Once upon a time",
+                "--course=Title");
     }
 }

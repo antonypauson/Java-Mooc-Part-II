@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
+import java.util.Scanner;
+
 public class MyApplication extends Application {
 
     @Override
@@ -21,13 +23,19 @@ public class MyApplication extends Application {
         layout.setCenter(button);
 
         Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.setTitle("My first application");
 
+        Parameters params = getParameters();
+        String title = params.getNamed().get("title");
+
+        window.setTitle(title);
         window.show();
     }
 
     public static void main(String[] args) {
-        launch(MyApplication.class);
+        System.out.println("Enter the title: ");
+        Scanner scanner = new Scanner(System.in);
+        String title = scanner.nextLine();
+
+        launch(MyApplication.class, "--title=" + title);
     }
 }
