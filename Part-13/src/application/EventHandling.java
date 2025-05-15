@@ -16,8 +16,17 @@ public class EventHandling extends Application {
         TextField rightText = new TextField();
         Button button = new Button("COPY");
 
+        //copying from left to right
+        //when button is clicked
         button.setOnAction((event) -> {
             rightText.setText(leftText.getText());
+        });
+
+        //character by character of leftText
+        //old value & new value
+        leftText.textProperty().addListener((change, oldValue, newValue) -> {
+            System.out.println(oldValue + " -> " + newValue);
+            rightText.setText(newValue);
         });
         HBox componentGroup = new HBox();
         componentGroup.setSpacing(20);
