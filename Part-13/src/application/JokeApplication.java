@@ -3,6 +3,7 @@ package application;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -33,6 +34,24 @@ public class JokeApplication extends Application {
 
         //add HBox to BorderPane
         layout.setTop(menu);
+
+        //separate layouts for each button
+        StackPane firstLayout = createView("Why England always loose in chess? ");
+        StackPane secondLayout = createView("They lost their queen");
+        StackPane thirdLayout = createView("The Queen of England died last year");
+
+        //event handling for buttons
+        firstButton.setOnAction((event) -> layout.setCenter(firstLayout));
+        secondButton.setOnAction((event) -> layout.setCenter(secondLayout));
+        thirdButton.setOnAction((event) -> layout.setCenter(thirdLayout));
+
+        layout.setCenter(firstLayout);
+
+        Scene scene = new Scene(layout);
+
+        window.setScene(scene);
+        window.show();
+
     }
 
     public StackPane createView(String text) {
