@@ -36,12 +36,27 @@ public class PartiesApplication extends Application {
         xAxis.setLabel("Year");
         yAxis.setLabel("Votes");
 
+        //Line Chart layout
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Relative support of the parties");
 
 
+        for(String party : map.keySet()) {
+            XYChart.Series<Number, Number> series = new XYChart.Series<>();
+            series.setName(party);
 
+            List<Double> values = map.get(party);
 
+            for (int i = 0; i < values.size(); i++) {
+                int year = years.get(i);
+                Double value = values.get(i);
+                if (value != -1) {
+                    series.getData().add(new XYChart.Data<>(year, value));
+                }
+            }
+
+            lineChart.getData().add(series);
+        }
 
         Scene scene = new Scene(lineChart,800,600);
         window.setScene(scene);
