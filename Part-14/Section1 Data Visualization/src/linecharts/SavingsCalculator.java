@@ -64,6 +64,26 @@ public class SavingsCalculator extends Application {
             }
         });
 
+        XYChart.Series<Number, Number> interestSeries = new XYChart.Series<>();
+        interestSeries.setName("Interests");
+        lineChart.getData().add(interestSeries);
+
+        double monthly = slider1.getValue();
+//        double yearly = slider2.getValue();
+
+        slider2.valueProperty().addListener((obs, oldVal, newVal) -> {
+            interestSeries.getData().clear();
+            int eachInterest = newVal.intValue();
+
+            double savings = 0;
+            for (int i = 0; i <= 30; i++) {
+                savings += monthly * 12;
+                savings *= 1 + (eachInterest / 100.0);
+                interestSeries.getData().add(new XYChart.Data<>(i, savings));
+
+            }
+        });
+
 
         BorderPane layout = new BorderPane();
 
