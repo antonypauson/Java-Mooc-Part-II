@@ -40,12 +40,20 @@ public class PartiesApplication extends Application {
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Relative support of the parties");
 
-
+        //map value
         for(String party : map.keySet()) {
+            //for each party name in key
+            //create XY series
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName(party);
 
+            //get the double values list
+            //from the map
             List<Double> values = map.get(party);
+
+            //from each values
+            //and from each year
+            //create new XYChart Data
 
             for (int i = 0; i < values.size(); i++) {
                 int year = years.get(i);
