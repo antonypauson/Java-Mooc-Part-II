@@ -2,6 +2,7 @@ package application.tictactoe;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -18,7 +19,55 @@ public class TicTacToeApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        BorderPane layout = new BorderPane();
+        Label status = new Label("Turn: " + currentPlayer);
+        status.setFont(Font.font("Monospaced", 25));
 
+        GridPane gameBoard = new GridPane();
+        gameBoard.setPadding(new Insets(10,10,10,10));
+        gameBoard.setHgap(10);
+        gameBoard.setVgap(10);
+
+        for (int i = 0; i < 9; i++) {
+            Button button = new Button();
+            button.setFont(Font.font("Monospaced", 25));
+            button.setMinSize(70,70);
+            button.setMaxSize(70,70);
+
+            button.setOnMouseClicked((event) ->  {
+                if (status.getText().startsWith("Winnner: ") || status.getText().equals("Its a draw")) {
+                    button.disarm();
+                } else if (button.getText().isEmpty()) {
+                    button.setText(currentPlayer);
+                    if (checkIfWinner()) {
+                        status.setText("The end");
+                    } else if (allBoxesAreFilled()) {
+                        status.setText("Its a draw");
+                    } else {
+                        takeTurn();
+                        status.setText("Turn: " + currentPlayer);
+                    }
+                }
+            });
+            buttons.add(button);
+        }
+
+        gameBoard.add(buttons.get(0), 0, 0);
+        gameBoard.add(buttons.get(1), 0, 1);
+        gameBoard.add(buttons.get(2), 0, 2);
+        gameBoard.add(buttons.get(3), 1, 0);
+        gameBoard.add(buttons.get(4), 1, 1);
+        gameBoard.add(buttons.get(5), 1, 2);
+        gameBoard.add(buttons.get(6), 2, 0);
+        gameBoard.add(buttons.get(7), 2, 1);
+        gameBoard.add(buttons.get(8), 2, 2);
+
+        layout.setTop(status);
+        layout.setCenter(gameBoard);
+
+        Scene scene = new Scene(layout);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void takeTurn() {
