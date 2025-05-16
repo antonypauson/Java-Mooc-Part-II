@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PartyFormat {
     private List<Integer> years;
@@ -19,7 +20,7 @@ public class PartyFormat {
         loadDataMap();
     }
 
-    public void loadDataYears() {
+    public List<Integer> loadDataYears() {
         try {
            String header = String.valueOf(Files.lines(Paths.get(fileName)).findFirst().orElse(""));
 
@@ -37,8 +38,10 @@ public class PartyFormat {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return this.years;
+
     }
-    public void loadDataMap() {
+    public HashMap<String, List<Double>> loadDataMap() {
         try {
             Files.lines(Paths.get(fileName))
                     .skip(1)
@@ -61,11 +64,8 @@ public class PartyFormat {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+        return this.map;
     }
 
-    public static void main(String[] args) {
-        PartyFormat pf = new PartyFormat();
-
-    }
 
 }
