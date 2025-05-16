@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -45,11 +46,25 @@ public class SavingsCalculator extends Application {
         NumberAxis xAxis = new NumberAxis(0,30,1);
         NumberAxis yAxis = new NumberAxis(0,27500,2500);
 
-        xAxis.setLabel("Year");
-        yAxis.setLabel("Ranking");
 
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.setTitle("Savings Calculator");
+
+        XYChart.Series<Number, Number> savingsSeries = new XYChart.Series<>();
+        savingsSeries.setName("Monthly Savings");
+        lineChart.getData().add(savingsSeries);
+
+        slider1.valueProperty().addListener((obs, oldVal, newVal) -> {
+            savingsSeries.getData().clear();
+            int monthly = newVal.intValue();
+
+            for (int i =0; i <= 30; i++) {
+                int total = monthly * 12 * i;
+                savingsSeries.getData().add(new XYChart.Data<>(i, total));
+            }
+        });
+
+
         BorderPane layout = new BorderPane();
 
         layout.setCenter(lineChart);
